@@ -34,6 +34,7 @@
   vertical-align: middle;
   text-align: center;
   margin-top: -8%;
+  z-index: 9999;
 }
 
 /* ================================================*/
@@ -78,4 +79,5 @@
   font-size: 2rem;
   border-radius: 2.5rem;
   display: none;
+  z-index: 9999;
 }

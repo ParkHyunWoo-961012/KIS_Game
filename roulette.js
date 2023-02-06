@@ -144,7 +144,6 @@ function stopRotateWheel() {
 
   audio = new Audio("./asset/"+musics[random_music_index]);
   audio.loop = true;
-  console.log(audio.length)
   clearTimeout(spinTimeout);
   var degrees = (startAngle * 180) / Math.PI + 90;
   var arcd = (arc * 180) / Math.PI;
@@ -157,7 +156,6 @@ function stopRotateWheel() {
 
   audio.play()
   audio.loop = true;
-  console.log(audio.length)
   document.getElementById('cong').style.visibility = 'visible';
   document.getElementById("in_name").innerText = options[index].name + "님\n 축하합니다!";
 
