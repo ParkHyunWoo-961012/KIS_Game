@@ -69,7 +69,8 @@ function cho_hangul(str) {
   }
   return result;
 }
-audio = new Audio("./asset/slotMachine.mp3");
+left_audio = new Audio("./asset/left_slot_sound.mp3");
+right_audio = new Audio("./asset/right_slot_sound.mp3");
 
 function slotRoller(spd, selector) {
   let symbol_no1 = "";
@@ -93,7 +94,8 @@ function slotRoller(spd, selector) {
       }
     )
   ).done(() => {
-      audio.pause();  
+    left_audio.pause();  
+    right_audio.pause();
   }); 
 }
 
@@ -104,7 +106,6 @@ function Slot_roll(slotName) {
   this.dice = function () {
     
     var dice = Math.round(Math.random() * (this.max - this.min)) + this.min;
-    audio.play()
     console.log(1)
     for (var i = 0; i < dice; i++) {
       slotRoller(i, slotName);
@@ -132,6 +133,7 @@ $("#btn_r").on("click", function () {
       const liTag = `<li data-roll=${idx}>${v.name}</li>`;
       $("#slot_box1 #list").append(liTag);
     });
+    left_audio.play();
     slot_roll1.dice();
   }
 });
@@ -152,6 +154,7 @@ $("#btn_s").on("click", function () {
       $("#slot_box2 #list").append(liTag);
     });
     if ($("#slot_box2 #list").is(":not(:animated)")) {
+      right_audio.play();
       slot_roll2.dice();
     }
   }

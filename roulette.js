@@ -112,7 +112,7 @@ function drawRouletteWheel() {
 }
 
 function spin() {
-  spin_audio = new Audio("./asset/wheel.wav");
+  spin_audio = new Audio("./asset/rotate_sound.wav");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   // spinTimeTotal = Math.random() * 3 + 4 * 3000;
