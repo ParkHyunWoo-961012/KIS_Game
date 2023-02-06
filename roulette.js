@@ -187,10 +187,12 @@ function rotateWheel() {
 }
 
 const musics = ["cong_music.wav", "cong_music1.mp3", "cong_music2.mp3", "cong_music3.mp3","cong_music4.wav"];
+
 random_music_index = Math.floor(Math.random() * 5);
 
 audio = new Audio("./asset/"+musics[random_music_index]);
-
+audio.loop = true;
+console.log(audio.length)
 function stopRotateWheel() {
   clearTimeout(spinTimeout);
   var degrees = (startAngle * 180) / Math.PI + 90;
@@ -201,8 +203,10 @@ function stopRotateWheel() {
   var text = `${options[index].name}(${options[index].eNum})`;
   ctx.fillText(text, 375 - ctx.measureText(text).width / 2, 375 + 10);
   ctx.restore();
-  audio.play()
 
+  audio.play()
+  audio.loop = true;
+  console.log(audio.length)
   document.getElementById('cong').style.visibility = 'visible';
   document.getElementById("in_name").innerText = options[index].name + "님\n 축하합니다!";
 
@@ -210,7 +214,7 @@ function stopRotateWheel() {
     audio.pause();  
     document.getElementById('cong').style.visibility = 'hidden';
     $("#moveSlot").css({ display: "inline-block" });  
-  }, 10000);
+  }, 7000); 
   
 }
 
