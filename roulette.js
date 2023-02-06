@@ -112,13 +112,16 @@ function drawRouletteWheel() {
 }
 
 function spin() {
+  spin_audio = new Audio("./asset/wheel.wav");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 3 + 4 * 3000;
+  // spinTimeTotal = Math.random() * 3 + 4 * 3000;
+  spinTimeTotal = 4 * 1700;
   rotateWheel();
 }
 
 function rotateWheel() {
+  spin_audio.play()
   spinTime += 30;
   if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
@@ -133,13 +136,15 @@ function rotateWheel() {
 
 const musics = ["cong_music.wav", "cong_music1.mp3", "cong_music2.mp3", "cong_music3.mp3","cong_music4.wav"];
 
-random_music_index = Math.floor(Math.random() * 5);
 
-audio = new Audio("./asset/"+musics[random_music_index]);
-audio.loop = true;
-console.log(audio.length)
 
 function stopRotateWheel() {
+  spin_audio.pause()
+  random_music_index = Math.floor(Math.random() * 5);
+
+  audio = new Audio("./asset/"+musics[random_music_index]);
+  audio.loop = true;
+  console.log(audio.length)
   clearTimeout(spinTimeout);
   var degrees = (startAngle * 180) / Math.PI + 90;
   var arcd = (arc * 180) / Math.PI;
