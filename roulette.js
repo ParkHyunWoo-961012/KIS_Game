@@ -37,21 +37,6 @@
 //   {"name": "가나다", "eNum": "113261"},
 //   {"name": "다라마", "eNum": "113261"},
 //   {"name": "가나라", "eNum": "113261"},
-//   {"name": "마바사", "eNum": "113261"},
-//   {"name": "최현우", "eNum": "113261"},
-//   {"name": "가나다", "eNum": "113261"},
-//   {"name": "가나다", "eNum": "113261"},
-//   {"name": "다라마", "eNum": "113261"},
-//   {"name": "가나라", "eNum": "113261"},
-//   {"name": "마바사", "eNum": "113261"},
-//   {"name": "최현우", "eNum": "113261"},
-//   {"name": "가나다", "eNum": "113261"},
-//   {"name": "가나다", "eNum": "113261"},
-//   {"name": "다라마", "eNum": "113261"},
-//   {"name": "가나라", "eNum": "113261"},
-//   {"name": "마바사", "eNum": "113261"},
-//   {"name": "최현우", "eNum": "113261"},
-//   {"name": "가나다", "eNum": "113261"},
 // ];
 var options = [];
 JSON.parse(localStorage.getItem("slotRes")).map((v) => {
@@ -193,6 +178,7 @@ random_music_index = Math.floor(Math.random() * 5);
 audio = new Audio("./asset/"+musics[random_music_index]);
 audio.loop = true;
 console.log(audio.length)
+
 function stopRotateWheel() {
   clearTimeout(spinTimeout);
   var degrees = (startAngle * 180) / Math.PI + 90;

@@ -1,5 +1,6 @@
 const resData = JSON.parse(localStorage.getItem("resList"));
 console.log(resData);
+
 if (resData !== null && resData.length !== 0) {
   $("#res-div").css({ display: "block" });
   resData.map((v) => {
@@ -68,6 +69,7 @@ function cho_hangul(str) {
   }
   return result;
 }
+audio = new Audio("./asset/slotMachine.mp3");
 
 function slotRoller(spd, selector) {
   let symbol_no1 = "";
@@ -75,7 +77,6 @@ function slotRoller(spd, selector) {
   var speed = 40; // slot 회전 속도
   var firstChild = $("#list li:first-child");
   lastChild = $("#list li:last-child");
-
   // slot 목록을 순환
   $.when(
     $(selector).animate(
@@ -92,8 +93,8 @@ function slotRoller(spd, selector) {
       }
     )
   ).done(() => {
-   
-  });
+      audio.pause();  
+  }); 
 }
 
 /* 슬롯 객체를 정의 */
@@ -101,12 +102,16 @@ function Slot_roll(slotName) {
   this.min = 12;
   this.max = 18;
   this.dice = function () {
+    
     var dice = Math.round(Math.random() * (this.max - this.min)) + this.min;
-
+    audio.play()
+    console.log(1)
     for (var i = 0; i < dice; i++) {
       slotRoller(i, slotName);
     }
+  
   };
+
 }
 
 /* 슬롯 객체 인스턴스 생성 */
