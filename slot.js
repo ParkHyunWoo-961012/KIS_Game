@@ -4,7 +4,7 @@ console.log(resData);
 if (resData !== null && resData.length !== 0) {
   $("#res-div").css({ display: "block" });
   resData.map((v) => {
-    $("#res_list").append(`<span>${v.name}(${v.eNum})</span>`);
+    $("#res_list").append(`<span>${v.name}&nbsp;${v.level}님</span>`);
   });
   let dataArr = JSON.parse(localStorage.getItem("data"));
   resData.map(v => {
@@ -38,6 +38,9 @@ const slotData = [
       "ㅎ",
     ],
   },
+{name : "입사년도 끝자리가",
+data : ["0~1","2~3","4~5","6~7","8~9"]
+},
 ];
 
 function cho_hangul(str) {
@@ -72,10 +75,10 @@ function cho_hangul(str) {
 left_audio = new Audio("./asset/left_slot_sound.mp3");
 right_audio = new Audio("./asset/right_slot_sound.mp3");
 
-function slotRoller(spd, selector) {
+function slotRoller(spd, selector, speed) {
   let symbol_no1 = "";
 
-  var speed = 40; // slot 회전 속도
+  // var speed = 40; // slot 회전 속도
   var firstChild = $("#list li:first-child");
   lastChild = $("#list li:last-child");
   // slot 목록을 순환
@@ -108,9 +111,11 @@ function Slot_roll(slotName) {
     var dice = Math.round(Math.random() * (this.max - this.min)) + this.min;
     console.log(1)
     for (var i = 0; i < dice; i++) {
-      slotRoller(i, slotName);
+      slotRoller(i, slotName, 40);
     }
-  
+    for(var i = 0; i < dice/4; i++) {
+      slotRoller(i, slotName, 1000);
+    }
   };
 
 }
@@ -237,7 +242,7 @@ $("#slot_btn").on("click", function () {
         case "1~10일":
           members.map((v, idx) => {
             if (idx !== 0) {
-              const date = parseInt(v.부서발령일.substring(8));
+              const date = parseInt(v.입사일.substring(8));
               if (1 <= date && date <= 10) {
                 arr.push(v);
               }
@@ -246,7 +251,7 @@ $("#slot_btn").on("click", function () {
           break;
         case "11~20일":
           members.map((v, idx) => {
-            const date = parseInt(v.부서발령일.substring(8));
+            const date = parseInt(v.입사일.substring(8));
             if (idx !== 0) {
               if (11 <= date && date <= 20) {
                 arr.push(v);
@@ -257,7 +262,7 @@ $("#slot_btn").on("click", function () {
         case "21~31일":
           members.map((v, idx) => {
             if (idx !== 0) {
-              const date = parseInt(v.부서발령일.substring(8));
+              const date = parseInt(v.입사일.substring(8));
               if (21 <= date && date <= 31) {
                 arr.push(v);
               }
@@ -276,6 +281,68 @@ $("#slot_btn").on("click", function () {
         }
       });
       break;
+    
+  
+      case "6":
+        console.log(slotData[idx1].data[idx2]);
+        switch (slotData[idx1].data[idx2]) {
+          case "0~1":
+            members.map((v, idx) => {
+              if (idx !== 0) {
+                const date = parseInt(v.입사일.substring(3,4));
+                console.log(v.입사일);
+                console.log(date);
+                if (0 == date || date == 1) {
+                  arr.push(v);
+                }
+              }
+            });
+            break;
+          case "2~3":
+            members.map((v, idx) => {
+              const date = parseInt(v.입사일.substring(3,4));
+              if (idx !== 0) {
+              
+                if (2 == date || date == 3) {
+                  arr.push(v);
+                }
+              }
+            });
+            break;
+          case "4~5":
+            members.map((v, idx) => {
+              if (idx !== 0) {
+                const date = parseInt(v.입사일.substring(3,4));
+                console.log(v.입사일);
+                console.log(date);
+                if (4 == date || date == 5) {
+                  arr.push(v);
+                }
+              }
+            });
+            break;
+          case "6~7":
+            members.map((v, idx) => {
+              if (idx !== 0) {
+                const date = parseInt(v.입사일.substring(3,4));
+                if (6 == date || date == 7) {
+                  arr.push(v);
+                }
+              }
+            });
+            break;
+          case "8~9":
+            members.map((v, idx) => {
+              if (idx !== 0) {
+                const date = parseInt(v.입사일.substring(3,4));
+                if (8 == date || date == 9) {
+                  arr.push(v);
+                }
+              }
+            });
+            break;
+        }
+        break;
   }
   console.log(arr);
   if (arr.length === 0) {

@@ -13,7 +13,7 @@ $(function(){
     setInterval(()=>{
 
         //.firecracker 추가
-        const firecracker = $("<div3>").addClass("firecracker");
+        const firecracker = $("<div>").addClass("firecracker");
         
         //초기 스타일 설정
         firecracker.css("font-size", generateRandomInteger(5, 30)+"px")

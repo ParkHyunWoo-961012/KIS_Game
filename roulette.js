@@ -1,6 +1,6 @@
 var options = [];
 JSON.parse(localStorage.getItem("slotRes")).map((v) => {
-  options.push({ name: v.성명, eNum: v.사번 });
+  options.push({ name: v.성명, eNum: v.사번, level: v.직위 });
 });
 console.log(options);
 var startAngle = 0;
@@ -99,14 +99,14 @@ function drawRouletteWheel() {
     //Arrow
     ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.moveTo(375 - 4, 375 - (outsideRadius + 5));
-    ctx.lineTo(375 + 4, 375 - (outsideRadius + 5));
-    ctx.lineTo(375 + 4, 375 - (outsideRadius - 5));
-    ctx.lineTo(375 + 9, 375 - (outsideRadius - 5));
-    ctx.lineTo(375 + 0, 375 - (outsideRadius - 13));
-    ctx.lineTo(375 - 9, 375 - (outsideRadius - 5));
-    ctx.lineTo(375 - 4, 375 - (outsideRadius - 5));
-    ctx.lineTo(375 - 4, 375 - (outsideRadius + 5));
+    ctx.moveTo(375 - 15, 375 - (outsideRadius + 25));
+    ctx.lineTo(375 + 15, 375 - (outsideRadius + 25));
+    ctx.lineTo(375 + 15, 375 - (outsideRadius - 15));
+    ctx.lineTo(375 + 29, 375 - (outsideRadius - 15));
+    ctx.lineTo(375 + 0, 375 - (outsideRadius - 50));
+    ctx.lineTo(375 - 29, 375 - (outsideRadius - 15));
+    ctx.lineTo(375 - 15, 375 - (outsideRadius - 15));
+    ctx.lineTo(375 - 15, 375 - (outsideRadius + 15));
     ctx.fill();
   }
 }
@@ -157,7 +157,7 @@ function stopRotateWheel() {
   audio.play()
   audio.loop = true;
   document.getElementById('cong').style.visibility = 'visible';
-  document.getElementById("in_name").innerText = options[index].name + "님\n 축하합니다!";
+  document.getElementById("in_name").innerText = options[index].name+ " " + options[index].level + "님\n 축하합니다!";
 
   setTimeout(function() {
     audio.pause();  

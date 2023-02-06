@@ -230,6 +230,15 @@
   color: #0A6699;
 }
 
+.btns-one {
+  width: 50%;
+  flex: 1.25
+}
+.btns-two {
+  width: 50%;
+  flex: 2
+}
+
 .btn_r,
 .btn_s {
   background: #0A6699;
@@ -261,6 +270,7 @@
 .div2-btns {
   text-align: left;
   padding-top: 10px;
+  display: flex;
 }
 
 .div2-title {
