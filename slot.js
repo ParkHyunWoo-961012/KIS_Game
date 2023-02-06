@@ -266,11 +266,7 @@ $("#slot_btn").on("click", function () {
     case "5":
       members.map((v) => {
         if (idx !== 0) {
-          console.log(v.성명);
           cho_sung_output = cho_hangul(v.성명);
-          console.log(cho_sung_output);
-          console.log(slotData[idx1].data[idx2]);
-          console.log(cho_sung_output.includes(slotData[idx1].data[idx2]));
           if (cho_sung_output.includes(slotData[idx1].data[idx2])) {
             arr.push(v);
           }
