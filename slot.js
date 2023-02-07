@@ -215,10 +215,8 @@ $("#slot_btn").on("click", function () {
       break;
     case "2":
       members.map((v, idx) => {
-          const strMonth =
-            (slotData[idx1].data[idx2] < 10 ? "0" : "") +
-            slotData[idx1].data[idx2];
-          const birthStr = String(v.생년월일);
+          const strMonth = (slotData[idx1].data[idx2] < 10 ? "0" : "") + slotData[idx1].data[idx2];
+          const birthStr = String(v.생년월일).substring(2, 4);
           if (birthStr === strMonth) {
             arr.push(v);
           }
