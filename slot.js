@@ -195,50 +195,43 @@ $("#slot_btn").on("click", function () {
   switch (idx1) {
     case "0":
       members.map((v, idx) => {
-        if (idx !== 0) {
           if (
             v.사번.substring(v.사번.length - 1) ===
             String(slotData[idx1].data[idx2])
           ) {
             arr.push(v);
           }
-        }
       });
       break;
     case "1":
       members.map((v, idx) => {
-        if (idx !== 0) {
           if (
             v.사번.substring(v.사번.length - 2, v.사번.length - 1) ===
             String(slotData[idx1].data[idx2])
           ) {
             arr.push(v);
           }
-        }
       });
       break;
     case "2":
       members.map((v, idx) => {
-        if (idx !== 0) {
           const strMonth =
             (slotData[idx1].data[idx2] < 10 ? "0" : "") +
             slotData[idx1].data[idx2];
           if (v.생년월일.substring(2, 4) === strMonth) {
             arr.push(v);
           }
-        }
       });
       break;
     case "3":
       members.map((v, idx) => {
-        if (idx !== 0) {
+          v.전화번호 = v.전화번호.replaceAll("-", "");
           if (
             v.전화번호.substring(v.전화번호.length - 1) ===
             String(slotData[idx1].data[idx2])
           ) {
             arr.push(v);
           }
-        }
       });
       break;
     case "4":
@@ -246,44 +239,36 @@ $("#slot_btn").on("click", function () {
       switch (slotData[idx1].data[idx2]) {
         case "1~10일":
           members.map((v, idx) => {
-            if (idx !== 0) {
               const date = parseInt(v.입사일.substring(8));
               if (1 <= date && date <= 10) {
                 arr.push(v);
               }
-            }
           });
           break;
         case "11~20일":
           members.map((v, idx) => {
             const date = parseInt(v.입사일.substring(8));
-            if (idx !== 0) {
               if (11 <= date && date <= 20) {
                 arr.push(v);
               }
-            }
           });
           break;
         case "21~31일":
           members.map((v, idx) => {
-            if (idx !== 0) {
               const date = parseInt(v.입사일.substring(8));
               if (21 <= date && date <= 31) {
                 arr.push(v);
               }
-            }
           });
           break;
       }
       break;
     case "5":
       members.map((v) => {
-        if (idx !== 0) {
           cho_sung_output = cho_hangul(v.성명);
           if (cho_sung_output.includes(slotData[idx1].data[idx2])) {
             arr.push(v);
           }
-        }
       });
       break;
     
@@ -293,59 +278,47 @@ $("#slot_btn").on("click", function () {
         switch (slotData[idx1].data[idx2]) {
           case "0~1":
             members.map((v, idx) => {
-              if (idx !== 0) {
                 const date = parseInt(v.입사일.substring(3,4));
                 console.log(v.입사일);
                 console.log(date);
                 if (0 == date || date == 1) {
                   arr.push(v);
                 }
-              }
             });
             break;
           case "2~3":
             members.map((v, idx) => {
               const date = parseInt(v.입사일.substring(3,4));
-              if (idx !== 0) {
-              
                 if (2 == date || date == 3) {
                   arr.push(v);
                 }
-              }
             });
             break;
           case "4~5":
             members.map((v, idx) => {
-              if (idx !== 0) {
                 const date = parseInt(v.입사일.substring(3,4));
                 console.log(v.입사일);
                 console.log(date);
                 if (4 == date || date == 5) {
                   arr.push(v);
                 }
-              }
             });
             break;
           case "6~7":
             members.map((v, idx) => {
-              console.log(v);
-              if (idx !== 0) {
                 console.log(v.입사일);
                 const date = parseInt(v.입사일.substring(3,4));
                 if (6 == date || date == 7) {
                   arr.push(v);
                 }
-              }
             });
             break;
           case "8~9":
             members.map((v, idx) => {
-              if (idx !== 0) {
                 const date = parseInt(v.입사일.substring(3,4));
                 if (8 == date || date == 9) {
                   arr.push(v);
                 }
-              }
             });
             break;
         }
@@ -355,7 +328,6 @@ $("#slot_btn").on("click", function () {
   if (arr.length === 0) {
     alert("조건에 해당되시는 분이 없습니다. 다시 돌려주세요.");
   } else {
-    console.log(arr);
     localStorage.setItem("slotRes", JSON.stringify(arr));
     $("#moveRoulette").css({ display: "inline-block" });
   }
