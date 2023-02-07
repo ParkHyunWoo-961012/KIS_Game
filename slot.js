@@ -218,7 +218,8 @@ $("#slot_btn").on("click", function () {
           const strMonth =
             (slotData[idx1].data[idx2] < 10 ? "0" : "") +
             slotData[idx1].data[idx2];
-          if (v.생년월일.substring(2, 4) === strMonth) {
+          const birthStr = String(v.생년월일);
+          if (birthStr === strMonth) {
             arr.push(v);
           }
       });
