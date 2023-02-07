@@ -223,7 +223,7 @@ $("#slot_btn").on("click", function () {
           const strMonth =
             (slotData[idx1].data[idx2] < 10 ? "0" : "") +
             slotData[idx1].data[idx2];
-          if (v.주민번호.substring(2, 4) === strMonth) {
+          if (v.생년월일.substring(2, 4) === strMonth) {
             arr.push(v);
           }
         }
