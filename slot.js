@@ -3,8 +3,13 @@ console.log(resData);
 
 if (resData !== null && resData.length !== 0) {
   $("#res-div").css({ display: "block" });
-  resData.map((v) => {
-    $("#res_list").append(`<span>${v.name}&nbsp;${v.level}님</span>`);
+  resData.map((v, idx) => {
+    if((idx%5) === 0) {
+      $("#res_list").append(`<br/><span>${v.name}&nbsp;${v.level}님</span>`);
+    } else {
+      $("#res_list").append(`<span>${v.name}&nbsp;${v.level}님</span>`);
+    }
+    
   });
   let dataArr = JSON.parse(localStorage.getItem("data"));
   resData.map(v => {
