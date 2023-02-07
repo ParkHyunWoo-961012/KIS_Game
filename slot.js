@@ -323,7 +323,9 @@ $("#slot_btn").on("click", function () {
             break;
           case "6~7":
             members.map((v, idx) => {
+              console.log(v);
               if (idx !== 0) {
+                console.log(v.입사일);
                 const date = parseInt(v.입사일.substring(3,4));
                 if (6 == date || date == 7) {
                   arr.push(v);
