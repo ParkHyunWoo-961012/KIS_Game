@@ -203,4 +203,5 @@ const moveSlot = () => {
     localStorage.setItem("resList", JSON.stringify([options[index]]));
   }
   window.location.href='slot.html';
+  // document.getElementById('cong').style.visibility = 'hidden';
 }
