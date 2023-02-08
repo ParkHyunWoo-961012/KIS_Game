@@ -158,13 +158,9 @@ function stopRotateWheel() {
   audio.loop = true;
   document.getElementById('cong').style.visibility = 'visible';
   document.getElementById("in_name").innerText = options[index].name+ " " + options[index].level + "님\n 축하합니다!";
-
-  setTimeout(function() {
-    audio.pause();  
-    document.getElementById('cong').style.visibility = 'hidden';
-    $("#moveSlot").css({ display: "inline-block" });  
-  }, 7000); 
-  
+  audio.pause();  
+  // document.getElementById('cong').style.visibility = 'hidden';
+  $("#moveSlot").css({ display: "inline-block" });  
 }
 
 /* 슬롯머신 이동 버튼*/
